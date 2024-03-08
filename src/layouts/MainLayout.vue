@@ -1,15 +1,14 @@
 <template>
-  <q-layout view="hHh lpR fFf" dark="true">
+  <q-layout view="hHh lpR fFf">
     <q-header elevated class="bg-primary text-white" height-hint="98">
       <q-toolbar>
+        <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
         <q-toolbar-title>
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
           </q-avatar>
           {{ appInfo.title }}
         </q-toolbar-title>
-
-        <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
       </q-toolbar>
 
       <q-tabs align="left">
@@ -18,8 +17,25 @@
       </q-tabs>
     </q-header>
 
-    <q-drawer show-if-above v-model="rightDrawerOpen" side="right" bordered>
-      <!-- drawer content -->
+    <q-drawer show-if-above v-model="rightDrawerOpen" side="left" bordered>
+      <q-list>
+        <q-item>
+          <q-item-section avatar>
+            <q-avatar color="teal" text-color="white" icon="person" />
+          </q-item-section>
+          <q-item-section>
+            <h5>{{ auth._username }}</h5>
+          </q-item-section>
+        </q-item>
+        <q-item>
+          <q-item-section avatar>
+            <q-avatar size="md" color="teal" text-color="white" icon="logout" />
+          </q-item-section>
+          <q-item-section>
+            <q-btn @click="logout" flat> Logout </q-btn>
+          </q-item-section>
+        </q-item>
+      </q-list>
     </q-drawer>
 
     <q-page-container>
@@ -31,7 +47,9 @@
         <q-toolbar-title>
           <div>{{ appInfo.title }} ({{ appInfo.version }})</div>
         </q-toolbar-title>
-        <q-toggle v-model="isDarkMode" @update:model-value="changeDarkMode">Dark Mode</q-toggle>
+        <q-toggle v-model="isDarkMode" @update:model-value="changeDarkMode"
+          >Dark Mode</q-toggle
+        >
       </q-toolbar>
     </q-footer>
   </q-layout>
@@ -41,10 +59,14 @@
 import { Ref, ref, onBeforeMount } from 'vue';
 import { useQuasar } from 'quasar';
 import { useConfigStore } from 'src/stores/config';
+import { useAuthStore } from 'src/stores/auth';
+import { useRouter } from 'vue-router';
 
 // Store
 const $q = useQuasar();
 const configStore = useConfigStore();
+const auth = useAuthStore();
+const router = useRouter();
 
 // State
 const isDarkMode: Ref<boolean> = ref(configStore.isDarkMode);
@@ -64,8 +86,24 @@ function toggleRightDrawer() {
   rightDrawerOpen.value = !rightDrawerOpen.value;
 }
 
+function redirectToLoginPage() {
+  router.push('/auth/login');
+}
+
+function logout() {
+  auth.clearLogginData();
+  redirectToLoginPage();
+}
+
+function checkUserAuthenticationState() {
+  if (auth.isLoggedIn === false) {
+    redirectToLoginPage();
+  }
+}
+
 // Run on startup
 onBeforeMount(() => {
+  checkUserAuthenticationState();
   $q.dark.set(configStore.isDarkMode);
 });
 </script>
