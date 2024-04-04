@@ -1,7 +1,5 @@
 <template>
-  <router-view />
+  <router-view class="font-yekan" />
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>

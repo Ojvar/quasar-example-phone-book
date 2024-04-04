@@ -2,14 +2,9 @@
   <q-page
     class="bg-light-green window-height window-width row justify-center items-center"
   >
-    <div class="no-red">
-      <div>hello</div>
-      <div class="large-size">hello2</div>
-    </div>
-
     <form class="column" @submit.prevent="validateUser">
       <div class="row">
-        <h5 class="text-h5 text-white q-my-md">Simple Phone Book</h5>
+        <h5 class="text-h5 text-white q-my-md">دفترچه تلفن</h5>
       </div>
       <div class="row">
         <q-card square bordered class="q-pa-lg shadow-1">
@@ -21,7 +16,7 @@
                 clearable
                 v-model="username"
                 type="text"
-                label="Username"
+                label="نام کاربری"
                 ref="usernameRef"
               />
               <q-input
@@ -30,7 +25,7 @@
                 clearable
                 v-model="password"
                 type="password"
-                label="Password"
+                label="گذرواژه"
               />
             </q-form>
           </q-card-section>
@@ -41,11 +36,11 @@
               color="light-green-7"
               size="lg"
               class="full-width"
-              label="Login"
+              label="ورود"
             />
           </q-card-actions>
           <q-card-section class="text-center q-pa-none">
-            <p class="text-grey-6">Not reigistered? Create an Account</p>
+            <p class="text-grey-6">حساب کاربری خود را بسازید</p>
           </q-card-section>
         </q-card>
       </div>

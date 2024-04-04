@@ -1,14 +1,16 @@
+// Web fonts url: https://vebeet.com/webfont-yekan/
+
 @font-face {
-    font-family: 'yekan-regular';
-    src: url('./fonts/yekan-regular.eot');
-    src: url('./fonts/yekan-regular.eot') format('embedded-opentype'),
-        url('./fonts/yekan-regular.woff') format('woff'),
-        url('./fonts/yekan-regular.ttf') format('truetype'),
-        url('./fonts/yekan-regular.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'yekan';
+  src: url('./fonts/yekan.eot');
+  src: url('./fonts/yekan.eot') format('embedded-opentype'),
+    url('./fonts/yekan.woff') format('woff'),
+    url('./fonts/yekan.ttf') format('truetype'),
+    url('./fonts/yekan.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .font-yekan {
-    font-family: 'yekan-regular';
+  font-family: 'yekan';
 }
