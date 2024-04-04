@@ -2,6 +2,11 @@
   <q-page
     class="bg-light-green window-height window-width row justify-center items-center"
   >
+    <div class="no-red">
+      <div>hello</div>
+      <div class="large-size">hello2</div>
+    </div>
+
     <form class="column" @submit.prevent="validateUser">
       <div class="row">
         <h5 class="text-h5 text-white q-my-md">Simple Phone Book</h5>
@@ -84,6 +89,7 @@ function validateUser() {
     usernameRef.value?.focus();
     usernameRef.value?.select();
   }
+  ``;
 }
 
 function checkLoginState() {

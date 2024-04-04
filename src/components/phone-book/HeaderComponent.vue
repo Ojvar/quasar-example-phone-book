@@ -1,3 +1,3 @@
 <template>
-  <h4>Contacts</h4>
+  <h4 class="text-uppercase">Contacts</h4>
 </template>

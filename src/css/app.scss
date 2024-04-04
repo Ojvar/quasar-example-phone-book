@@ -1,1 +1,30 @@
-// app global css in SCSS form
+@import "./fonts.scss";
+@import "./colors.scss";
+
+// body * {
+//   font-family: "font-yekan";
+// }
+
+// body {
+//   color: red;
+// }
+
+// body .no-red {
+//   color: blue;
+// }
+
+// body .no-red .large-size {
+//   font-size: 40px;
+// }
+
+body {
+  color: red;
+
+  .no-red {
+    color: blue;
+
+    .large-size {
+      font-size: 10px;
+    }
+  }
+}
